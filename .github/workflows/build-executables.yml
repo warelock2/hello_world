@@ -50,14 +50,14 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: windows-executables
-        path: dist/
+        path: dist/hello_world.exe
 
     - name: Create Artifact (Linux)
       if: matrix.os == 'ubuntu-latest'
       uses: actions/upload-artifact@v3
       with:
         name: linux-executables
-        path: dist/
+        path: dist/hello_world
 
     - name: Create Artifact (macOS)
       if: matrix.os == 'macos-latest'

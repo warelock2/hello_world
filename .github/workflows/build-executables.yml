@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -68,3 +70,15 @@ jobs:
 
     - name: List files in dist folder
       run: ls -R ./dist/
+
+    - name: Upload Release Asset (Windows)
+      id: upload-release-asset
+      if: matrix.os == 'windows-latest'
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{steps.create_release.outputs.upload_url}}
+        asset_path: dist/hello_world.exe
+        asset_name: hello_world_windows.exe
+        asset_content_type: application/x-msdownload

@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+        os: ['windows-latest', 'ubuntu-latest', 'macos-12']
 
     env:
       MAIN_PY_FILE: 'hello_world.py'  # Define the path to your main.py file here
@@ -62,7 +62,7 @@ jobs:
         path: dist/hello_world
 
     - name: Create Artifact (macOS)
-      if: matrix.os == 'macos-latest'
+      if: matrix.os == 'macos-12'
       uses: actions/upload-artifact@v3
       with:
         name: macos-executables
@@ -70,15 +70,3 @@ jobs:
 
     - name: List files in dist folder
       run: ls -R ./dist/
-
-    - name: Upload Release Asset (Windows)
-      id: upload-release-asset
-      if: matrix.os == 'windows-latest'
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{steps.create_release.outputs.upload_url}}
-        asset_path: dist/hello_world.exe
-        asset_name: hello_world_windows.exe
-        asset_content_type: application/x-msdownload

@@ -12,6 +12,14 @@ The following operating systems are supported:
 - MacOS
 - Windows
 
+NOTE: For Linux you'll likely have to set the file to be executable, before trying to run it.
+
+Example (for v1.0):
+
+```
+chmod +x hello_world_v1.0_linux
+```
+
 See the [releases](https://github.com/warelock2/hello_world/releases) section for OS-specific, compiled binaries to download and directly run.
 
 ## Screen Shots

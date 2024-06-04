@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is my first attempt at creating a simple, cross-platform GUI application using Python and PyQt5, packaged with pyinstaller. 
+This is my first attempt at creating a simple, cross-platform GUI application using Python and PyQt5, packaged with pyinstaller, and automatically built with Github Actions. 
 
 ## Releases
 
